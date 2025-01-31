@@ -43,7 +43,7 @@ const Register = () => {
       setLoading(false);
     }catch(e){
 
-        setMessage(e?.response?.data?.message);
+        setMessage(e?.response?.data?.message || "Internal server error");
       
       
       setLoading(false);
