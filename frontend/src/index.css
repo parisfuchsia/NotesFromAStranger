@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+.bg-semiblack {
+  background-color: #00000085
+}
+
+.text-pink{
+  color: #e1b1e8;
+}
+
+::placeholder{
+  color: white;
+  opacity: 50%;
+ 
+}
+
+
+.bg-pink{ 
+  background-color: #e1b1e8;
+  background-size: contain;
+}
+
+.no-pointer{ 
+  pointer-events: none;
+}
+
+.bg-dark-violet{
+  background-color: #38378c ;
+}
+
+.hover-scale:hover{
+  transform: scale(1.1);
+  transition-duration: 200ms;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+.bg-transparent {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.bg-hazy{ 
+  background-image: url("./assets/hazy.png");
+  background-size:cover;
+}
+
+.bg-dark-ultra{
+  
+  background-image: url("./assets/meteorbg.png");
+  background-size:cover;
+}
+
+.bg-starry{ 
+  background-image: url("./assets/starrybg.png");
+  
+}
+
+.gloria-font{
+  font-family: "Gloria Hallelujah", serif;
+}
+
+.min-vh-50{
+  min-height: 50vh;
+}
