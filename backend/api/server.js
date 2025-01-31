@@ -17,12 +17,12 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-const PORT = process.env.PORT || 1999;
+const port = process.env.PORT || 1999;
 
 app.use("/api", router);
 
 connectDb().then(() => {
-  app.listen(PORT, () => {
+  app.listen(port, () => {
   
 })
 }).catch((error) => {
