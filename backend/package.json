@@ -1,11 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "api/server.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon api/server.js",
-    "start" : "node api/server.js"
+    "dev": "nodemon server.js",
+    "start" : "node server.js"
   },
   "author": "",
   "license": "ISC",
