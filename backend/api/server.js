@@ -22,7 +22,7 @@ const port = process.env.PORT || 1999;
 app.use("/api", router);
 
 connectDb().then(() => {
-  app.listen(port, () => {
+  app.listen(port, "0.0.0.0", () => {
   
 })
 }).catch((error) => {
