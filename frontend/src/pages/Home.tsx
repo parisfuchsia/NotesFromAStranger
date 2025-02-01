@@ -133,7 +133,7 @@ const Home = () => {
                                 ? notes
                                       .slice()
                                       .reverse()
-                                      .map(mail => <Mail mail={mail} />)
+                                      .map(mail => <Mail key = {mail?._id} mail={mail} />)
                                 : !isNotesPending && (
                                       <div>
                                           <p className="text-center text-light gloria-font">

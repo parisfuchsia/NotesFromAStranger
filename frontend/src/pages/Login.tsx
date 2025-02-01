@@ -42,10 +42,8 @@ const Register = () => {
       })
       
       if(res.data.success){
-      
-        
-        nav("/");
         dispatch(getSession());
+        nav("/");
         setLoading(false);
       }
       

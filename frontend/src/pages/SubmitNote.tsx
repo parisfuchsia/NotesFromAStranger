@@ -55,7 +55,7 @@ const SubmitNote = () => {
       }
       textareaRef.current.style.height = "40vh"
     }catch(e){
-      console.log("submission", {e})
+      
       setError(e.response.data.message || "Network error");
       setTimeout(() => {
         setError("");

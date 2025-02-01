@@ -28,6 +28,8 @@ function App() {
           dispatch(getSession())
         }
     }, [location, dispatch]);
+    
+   
 
     return (
         <div className="">

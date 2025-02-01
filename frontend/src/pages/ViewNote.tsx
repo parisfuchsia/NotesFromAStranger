@@ -51,7 +51,7 @@ const ViewNote = () => {
 
                 setDate(`${months[month - 1]} ${date}, ${year}`);
             } catch (e) {
-                console.log("getNoteDetail", {e})
+                
             }
         };
         getNoteDetail();
