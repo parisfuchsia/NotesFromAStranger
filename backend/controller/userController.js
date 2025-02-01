@@ -25,7 +25,7 @@ const register = async(req, res) => {
        message: "Account successfully created"
      })
   }catch(e){
-    
+  
     return res.status(500).json({
       success: false,
       message: "Internal server error"
@@ -53,7 +53,7 @@ const login = async(req, res) => {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     maxAge: 21600000,
-    sameSite: "Lax"
+    sameSite: "None"
   })
    
    return res.status(200).json({
