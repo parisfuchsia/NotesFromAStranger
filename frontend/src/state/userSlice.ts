@@ -37,7 +37,9 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getSession.pending, (state) => {
+      state.error = false;
       state.loading = true;
+      
     })
     builder.addCase(getSession.fulfilled, (state, action) => {
       if(Object.keys(action.payload).length < 1){
