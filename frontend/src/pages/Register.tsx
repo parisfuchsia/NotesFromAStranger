@@ -39,9 +39,10 @@ const Register = () => {
       }
       setLoading(false);
     }catch(e){
-        if(e.status === 409){
-        setMessage(e?.response?.data?.message);
-      }
+              setMessage(e?.response?.data?.message || "Internal server error");
+      
+      
+      
       
       setLoading(false);
     }
