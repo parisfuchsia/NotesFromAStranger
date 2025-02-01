@@ -12,7 +12,7 @@ export const getSession = createAsyncThunk("getSession", async(_, thunkAPI) => {
       withCredentials: true
     });
    
-    if(Object.keys(res.data.userDetail).length < 1){
+    if(Object.keys(res.data.userDetail).length === 0){
       return thunkAPI.rejectWithValue("")
     }
     return res.data.userDetail;
@@ -42,12 +42,7 @@ const userSlice = createSlice({
       
     })
     builder.addCase(getSession.fulfilled, (state, action) => {
-      if(Object.keys(action.payload).length < 1){
-        state.loading = false;
-        state.error = true;
-        return;
-      }
-      state.userDetail = action.payload 
+      state.userDetail = action.payload || {}
       state.loading = false;
       state.error = false;
     })
