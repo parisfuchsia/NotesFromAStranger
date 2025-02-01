@@ -53,7 +53,7 @@ const SubmitNote = () => {
         setMessage("");
         setError(false);
       }
-      textareaRef.current.style.height = "auto"
+      textareaRef.current.style.height = "40vh"
     }catch(e){
       console.log("submission", {e})
       setError(e.response.data.message || "Network error");
@@ -66,8 +66,10 @@ const SubmitNote = () => {
   useEffect(() => {
     const textarea = textareaRef.current; 
     if(textarea){
+      
       const totalScrollHeight = textarea.scrollHeight;
       textarea.style.height =  `${totalScrollHeight}px`
+      
     }
   }, [message])
   
@@ -95,7 +97,7 @@ const SubmitNote = () => {
               <h1 className = "mt-5 mb-3 fs-1 gloria-font text-light">Send a message to {user?.username}</h1>
               <p className = "gloria-font opacity-75  text-light">! The recipient won't be able to know the sender of this message</p>
       </div>
-      <textarea placeholder = "Type your message here..." ref = {textareaRef} value = {message} onChange = {e => setMessage(e.target.value)}className = " min-vh-50  bg-transparent text-light mb-5 w-75" />
+      <textarea placeholder = "Type your message here..." ref = {textareaRef} value = {message} onChange = {e => setMessage(e.target.value)}className = " min-vh-40  bg-transparent text-light mb-5 w-75" />
 
         <button onClick = {handleSubmit} className = "btn btn-outline-light w-75 z-3 text-truncate">
           Submit

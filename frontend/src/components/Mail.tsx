@@ -13,7 +13,6 @@ const staggerChild = {
 const Mail = ({mail}) => {
   
   return (
-
     <motion.div
     variants = {fade} 
     initial = "hidden" 
@@ -24,7 +23,9 @@ const Mail = ({mail}) => {
       }
     }}
     className = "p-1 hover-scale col-6 col-md-4 col-lg-3" >
+
           <Link to = {`/note/${mail?._id}`}>
+            
       <img className = "img-fluid "src = {mail?.read ? MailIcon : UnreadMailIcon} />
           </Link>
     </motion.div>

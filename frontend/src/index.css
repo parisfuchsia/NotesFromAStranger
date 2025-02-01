@@ -28,6 +28,10 @@
   background-color: #38378c ;
 }
 
+.min-vh-40{
+  min-height: 40vh;
+}
+
 .hover-scale:hover{
   transform: scale(1.1);
   transition-duration: 200ms;
