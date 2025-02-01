@@ -143,7 +143,11 @@ const getUserByName = async(req, res) => {
 
 const handleLogout = async(req, res) => {
   
-  res.clearCookie("token");
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "None"
+  });
   return res.status(200).json({
     success: true
   })
