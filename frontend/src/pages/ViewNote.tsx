@@ -110,7 +110,7 @@ const ViewNote = () => {
                         <CiShare1 onClick={shareLink} />
                     </div>
                 </div>
-                <div className="mb-5 min-vh-50 w-75 text-light text-start gloria-font">
+                <div className="mb-5 min-vh-40 w-75 text-light text-start gloria-font">
                     {noteDetail?.message}
                 </div>
                 { userDetail?.username !== noteDetail?.to && <NavLink
