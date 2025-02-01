@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { fade } from '../variant/variant.ts';
-import cloudpng from '../assets/cloudx.png';
+
 
 const Cloud = () => {
   return (
@@ -9,7 +9,7 @@ const Cloud = () => {
           initial = "hidden" 
           animate = "visible"
           className = "w-100 m-0">
-              <img className = "img-fluid" src = {cloudpng} />
+              <img className = "img-fluid" src = "/assets/cloudx.png" />
       </motion.div>
   )
 }

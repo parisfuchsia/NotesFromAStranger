@@ -1,6 +1,4 @@
 
-import MailIcon from '../assets/mail.png';
-import UnreadMailIcon from '../assets/unreadmail.png';
 import { Link } from 'react-router-dom';
 import { fade } from '../variant/variant.ts';
 import { motion } from 'framer-motion';
@@ -26,7 +24,7 @@ const Mail = ({mail}) => {
 
           <Link to = {`/note/${mail?._id}`}>
             
-      <img className = "img-fluid "src = {mail?.read ? MailIcon : UnreadMailIcon} />
+      <img className = "img-fluid "src = {mail?.read ? "/assets/mail.png" : "/assets/unreadmail.png"} />
           </Link>
     </motion.div>
 
