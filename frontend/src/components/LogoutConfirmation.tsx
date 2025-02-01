@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { resetSession } from '../state/userSlice.ts';
+import { useDispatch } from 'react-redux';
 import { fade } from '../variant/variant.ts';
 import { useEffect } from 'react';
 
 const LogoutConfirmation = ({onClose, name, open}) => {
-  
+  const dispatch = useDispatch();
   const nav = useNavigate();
   
   useEffect(() => {
@@ -21,11 +23,12 @@ const LogoutConfirmation = ({onClose, name, open}) => {
             {},
             { withCredentials: true }
         );
+        
         if (res?.data?.success) {
-          
+          dispatch(resetSession())
             nav("/");
             window.location.reload();
-            onClose()
+            onClose();
         }
     };
   
