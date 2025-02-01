@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { getSession } from '../state/userSlice.ts';
+import { useDispatch, useSelector } from 'react-redux';
 import Form from '../components/Form.tsx';
 import axios from 'axios';
 
@@ -14,6 +16,8 @@ const Register = () => {
   });
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const dispatch= useDispatch();
+  const { userDetail } = useSelector(state => state.user);
   const nav = useNavigate();
   
   const handleChange = useCallback((e) => {
@@ -38,9 +42,13 @@ const Register = () => {
       })
       
       if(res.data.success){
+      
+        
         nav("/");
+        dispatch(getSession());
+        setLoading(false);
       }
-      setLoading(false);
+      
     }catch(e){
 
         setMessage(e?.response?.data?.message || "Internal server error");

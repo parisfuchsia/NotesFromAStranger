@@ -27,7 +27,7 @@ function App() {
         }else{
           dispatch(getSession())
         }
-    }, [location]);
+    }, [location, dispatch]);
 
     return (
         <div className="">

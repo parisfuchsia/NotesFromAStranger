@@ -28,7 +28,8 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     resetSession: () => {
-      return initialState;
+      
+      return initialState
     },
     returnError: (state) => {
       state.error = true;

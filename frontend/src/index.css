@@ -54,12 +54,6 @@
   border: none;
   outline: none;
 }
-
-.bg-hazy{ 
-  background-image: url("/assets/hazy.png");
-  background-size:cover;
-}
-
 .bg-dark-ultra{
   
   background-image: url("/assets/meteorbg.png");

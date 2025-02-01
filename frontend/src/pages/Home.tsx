@@ -23,7 +23,7 @@ const Home = () => {
     const [isNotesPending, setIsNotesPending] = useState(false);
 
     useEffect(() => {
-        if (Object.keys(userDetail).length < 1) {
+        if (Object.keys(userDetail).length === 0) {
             dispatch(getSession());
             setIsNotesPending(true);
         }
@@ -53,7 +53,7 @@ const Home = () => {
             }
                 getAllNotes();
         }
-    }, [userDetail, loading]);
+    }, [userDetail, dispatch]);
 
     const shareLink = () => {
         const linkFormat = `${
