@@ -31,7 +31,8 @@ const Home = () => {
 
     useEffect(() => {
         if (Object.keys(userDetail).length > 0) {
-            const getAllNotes = async () => {
+            const getAllNotes = async () => { 
+              try{
                 const res = await axios.get(
                     `${
                         import.meta.env.VITE_BACKEND_URL
@@ -46,13 +47,11 @@ const Home = () => {
                     setUnread(unreadNotes.length);
                     setIsNotesPending(false);
                 }
-            };
-
-            try {
-                getAllNotes();
-            } catch (e) {
-                dispatch(returnError());
+            }catch(e){
+              dispatch(returnError());
             }
+            }
+                getAllNotes();
         }
     }, [userDetail, loading]);
 

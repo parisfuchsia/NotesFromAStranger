@@ -18,7 +18,7 @@ export const getSession = createAsyncThunk("getSession", async(_, thunkAPI) => {
     return res.data.userDetail;
     
   }catch(e){
-
+console.log("session", {e})
     return thunkAPI.rejectWithValue("");
   }
 })
