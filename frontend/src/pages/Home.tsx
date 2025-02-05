@@ -12,6 +12,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { CiShare1, CiLogout } from "react-icons/ci";
 import { fade } from "../variant/variant.ts";
+import TopLoader from '../components/TopLoader.tsx';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -73,6 +74,9 @@ const Home = () => {
     if (Object.keys(userDetail).length > 0 && !loading) {
         return (
             <div>
+              {
+                isNotesPending && <TopLoader />
+              }
                 <AnimatePresence>
                     {isLogoutModalOpen && (
                         <LogoutModal
