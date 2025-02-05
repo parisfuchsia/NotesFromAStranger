@@ -43,7 +43,7 @@ const getSpecificNote = async(req, res) => {
     })
   }
   try{
-    const note = await Note.findOne({ _id: noteId });
+    const note = await Note.findOne({ _id: noteId }).lean();
     return res.status(200).json({
       note
     });
@@ -60,7 +60,7 @@ const getAllNotes = async(req, res) => {
 
   try {
     
-    const notes = await Note.find({to: userId});
+    const notes = await Note.find({to: userId}).lean();
     
       if(!userId || !notes){
     return res.status(400).json({

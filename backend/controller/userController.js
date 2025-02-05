@@ -7,8 +7,8 @@ const { User } = require("../models/userModel.js");
 //Look for session
 
 const register = async(req, res) => {
-  const username = req.body.username.trim().toLowerCase();
-  const password = req.body.password.trim().toLowerCase();
+  const username = req.body.username?.trim()?.toLowerCase();
+  const password = req.body.password?.trim()?.toLowerCase();
   
   if(req.userExists){
     return res.status(409).json({
@@ -34,8 +34,8 @@ const register = async(req, res) => {
 }
 
 const login = async(req, res) => {
-  const username = req.body.username.trim().toLowerCase();
-  const password = req.body.password.trim().toLowerCase();
+  const username = req.body.username?.trim()?.toLowerCase();
+  const password = req.body.password?.trim()?.toLowerCase();
   
   if(username.length < 6 || username.length > 10 || password.length < 6 || password.length > 20 || !req.userExists || (req.userExists && !(await req.userExists?.isPasswordsMatch(password)))){
     return res.status(400).json({
@@ -82,7 +82,7 @@ const lookForSession = async(req, res) => {
   try {
     
     const decoded = await jwt.verify(token, process.env.JWT_SECRET);
-    const userDetail = await User.findOne({_id: decoded.id}, "-password -createdAt -updatedAt --v")
+    const userDetail = await User.findById(decoded.id,  "-password -createdAt -updatedAt --v")
     return res.status(200).json({
       success: true,
       userDetail
@@ -141,7 +141,7 @@ const getUserByName = async(req, res) => {
   }
 } 
 
-const handleLogout = async(req, res) => {
+const handleLogout = (req, res) => {
   
   res.clearCookie("token", {
     httpOnly: true,

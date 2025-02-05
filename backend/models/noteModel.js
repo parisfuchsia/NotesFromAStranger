@@ -3,12 +3,14 @@ const mongoose = require("mongoose");
 const noteModel = new mongoose.Schema({
   message: {
     type: String,
-    required: true
+    required: true,
+   
   },
   to: {
     type: String,
     ref: "nfasuser",
-    required: true
+    required: true,
+    index: true
   },
   read: {
     type: Boolean,
