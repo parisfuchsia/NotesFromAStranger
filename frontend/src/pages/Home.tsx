@@ -74,9 +74,11 @@ const Home = () => {
     if (Object.keys(userDetail).length > 0 && !loading) {
         return (
             <div>
-              {
+              <AnimatePresence>
+                              {
                 isNotesPending && <TopLoader />
               }
+              </AnimatePresence>
                 <AnimatePresence>
                     {isLogoutModalOpen && (
                         <LogoutModal
