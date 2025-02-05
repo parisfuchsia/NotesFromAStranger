@@ -25,16 +25,16 @@ const Home = () => {
     const [isNotesPending, setIsNotesPending] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
     useEffect(() => {
+                                setIsNotesPending(true);
         if (Object.keys(userDetail).length === 0) {
             dispatch(getSession());
-            setIsNotesPending(true);
         }
     }, [dispatch]);
 
     useEffect(() => {
         if (Object.keys(userDetail).length > 0) {
             const getAllNotes = async () => { 
-              
+
               try{
 
                 const res = await axios.get(
@@ -59,7 +59,11 @@ const Home = () => {
             
                 getAllNotes();
         }
-        return() => setErrorMsg("");
+        return() => {
+          setErrorMsg("");
+          setIsNotesPending(false);
+          
+        }
     }, [userDetail, dispatch]);
 
     const shareLink = () => {
