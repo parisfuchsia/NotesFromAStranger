@@ -61,7 +61,6 @@ const Home = () => {
         }
         return() => {
           setErrorMsg("");
-          setIsNotesPending(false);
           
         }
     }, [userDetail, dispatch]);
@@ -155,7 +154,7 @@ const Home = () => {
                                       .slice()
                                       .reverse()
                                       .map(mail => <Mail key = {mail?._id} mail={mail} />)
-                                : errorMsg ? <div>
+                                : errorMsg && errorMsg.length > 0 ? <div>
                                                                               <p onClick = {() => window.location.reload()} className="text-center  text-light text-decoration-underline display-10 gloria-font m-0">
                                                                           <IoReloadOutline size = "20"/>     Refresh the page
                                           </p>
