@@ -14,6 +14,7 @@ const SubmitNote = () => {
   const [empty, setEmpty] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  
  
   const textareaRef = useRef(null);
   const { id } = useParams();
@@ -36,6 +37,21 @@ const SubmitNote = () => {
       setLoading(false);
     }
   }, [id]);
+  
+  useEffect(() => {
+    if(localStorage.getItem("message") !== null){
+      const savedItem = JSON.parse(localStorage.getItem("message"));
+      if(savedItem.id === id){
+        setMessage(savedItem.message);
+      }
+    }
+  }, [id])
+  
+  useEffect(() => {
+    if(message && id){
+      localStorage.setItem("message", JSON.stringify({message, id}));
+    }
+ }, [message, id])
   
   const handleSubmit = async() => {
     if(!message){

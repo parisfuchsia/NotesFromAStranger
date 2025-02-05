@@ -8,11 +8,13 @@ import { fade } from '../variant/variant.ts';
 const zoomVariant = {
   hidden: {
     opacity:0,
-    padding: 0
+    padding: 0,
+    
   },
   visible: {
     opacity: 1,
     padding: '1.2rem',
+    
     transition: {
       duration: 1
     }
