@@ -5,6 +5,7 @@ import { getSession, returnError } from "../state/userSlice.ts";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 const ErrorModal = lazy(() => import("../components/ErrorModal.tsx"));
+import { IoReloadOutline } from "react-icons/io5";
 import LoadingSpinner from "../components/Loading.tsx";
 import AlertModal from "../components/AlertModal.tsx";
 import LogoutModal from "../components/LogoutConfirmation.tsx";
@@ -22,7 +23,7 @@ const Home = () => {
     const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
     const [unread, setUnread] = useState(0);
     const [isNotesPending, setIsNotesPending] = useState(false);
-
+    const [errorMsg, setErrorMsg] = useState("");
     useEffect(() => {
         if (Object.keys(userDetail).length === 0) {
             dispatch(getSession());
@@ -33,7 +34,9 @@ const Home = () => {
     useEffect(() => {
         if (Object.keys(userDetail).length > 0) {
             const getAllNotes = async () => { 
+              
               try{
+
                 const res = await axios.get(
                     `${
                         import.meta.env.VITE_BACKEND_URL
@@ -49,11 +52,14 @@ const Home = () => {
                     setIsNotesPending(false);
                 }
             }catch(e){
-              dispatch(returnError());
-            }
-            }
+              setIsNotesPending(false)
+              setErrorMsg("Something unexpected occurred. Please refresh the page");
+              
+            }}
+            
                 getAllNotes();
         }
+        return() => setErrorMsg("");
     }, [userDetail, dispatch]);
 
     const shareLink = () => {
@@ -70,6 +76,8 @@ const Home = () => {
     if (error) {
         return <Navigate to="/login" replace />;
     }
+    
+    
 
     if (Object.keys(userDetail).length > 0 && !loading) {
         return (
@@ -89,7 +97,10 @@ const Home = () => {
                     )}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {copied && (
+                    {errorMsg && errorMsg.length > 0 ?  <AlertModal
+                            message={errorMsg}
+                            color="danger"
+                        /> : copied && (
                         <AlertModal
                             message="Your link is ready to share"
                             color="primary"
@@ -140,7 +151,11 @@ const Home = () => {
                                       .slice()
                                       .reverse()
                                       .map(mail => <Mail key = {mail?._id} mail={mail} />)
-                                : !isNotesPending && (
+                                : errorMsg ? <div>
+                                                                              <p onClick = {() => window.location.reload()} className="text-center  text-light text-decoration-underline display-10 gloria-font m-0">
+                                                                          <IoReloadOutline size = "20"/>     Refresh the page
+                                          </p>
+                                  </div> : !isNotesPending && (
                                       <div>
                                           <p className="text-center text-light gloria-font">
                                               Nothing to see here...
@@ -152,6 +167,7 @@ const Home = () => {
                                       </div>
                                   )}
                         </motion.div>
+                            
                     )}
                 </main>
             </div>
